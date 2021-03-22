@@ -1,5 +1,0 @@
-development:
-  url: https://api.eet.test/receipts?locale=nl
-
-production:
-  url: https://api.eet.nu/receipts?locale=nl
