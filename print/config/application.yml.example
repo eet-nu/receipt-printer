@@ -1,11 +1,5 @@
-default: &DEFAULTS
-
 development:
-  <<: *DEFAULTS
-  development: "This is development"
   url: https://api.eet.test/receipts?locale=nl
 
 production:
-  <<: *DEFAULTS
-  production: "This is production"
   url: https://api.eet.nu/receipts?locale=nl
