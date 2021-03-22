@@ -1,35 +1,35 @@
 #!/bin/bash
 
-home="/home/pi"
-path=$home/print/
+home="/home/pi/"
+app=$home/receipt-printer/
 
 if [ $# -eq 2 ]; then
-  echo "Weigh anchor and hoist the mizzen! Heave Ho!"
-  
+  echo "Weigh anchor and hoist the mizzen! Heave ho!"
+
   access_key=$1
   secret=$2
-  
+
   sudo sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 127.0.0.1/' /etc/ssh/sshd_config
-  sed -i 's/RAILS_ENV=development/RAILS_ENV=production/' $home/polling_script.rb
 
   # prep for new remote.it registration
   sudo connectd_control stop all
   sudo connectd_control reset y
-  
-  echo "Batten Down The Hatches me Hearties!"
-else
-  echo "Prepping pi for base image creation"
 
-  sed -i 's/RAILS_ENV=production/RAILS_ENV=development/' $home/polling_script.rb
+  echo "Batten down the hatches me hearties!"
+else
+  echo "Prepping pi to create a new image for release"
+
   access_key="uid"
   secret="pass"
 fi
 
+sed -i 's/RAILS_ENV=development/RAILS_ENV=production/' $app/polling.service
+
 # cancel any jobs currently in the cups queue
 cancel -a -x
 
-echo $access_key > $path/config/access_key
-echo $secret > $path/config/secret
+echo $access_key > $app/config/access_key
+echo $secret > $app/config/secret
 echo $access_key | sudo tee /etc/connectd/hardware_id.txt >/dev/null
 
 sudo rm -f /etc/NetworkManager/system-connections/*.nmconnection

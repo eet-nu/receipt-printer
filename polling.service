@@ -1,0 +1,16 @@
+[Unit]
+Description=Fetch and print receipts
+After=network.target
+
+[Service]
+Environment="RAILS_ENV=production"
+WorkingDirectory=/home/pi/receipt-printer
+ExecStartPre=sleep 5s
+ExecStart=/home/pi/.rbenv/shims/ruby polling_script.rb
+StandardOutput=null
+StandardError=null
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
