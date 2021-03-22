@@ -1,7 +1,7 @@
 #!/bin/bash
 
-home="/home/pi/"
-app=$home/receipt-printer/
+home="/home/pi"
+app=$home/receipt-printer
 
 if [ $# -eq 2 ]; then
   echo "Weigh anchor and hoist the mizzen! Heave ho!"
@@ -28,8 +28,8 @@ sed -i 's/RAILS_ENV=development/RAILS_ENV=production/' $app/polling.service
 # cancel any jobs currently in the cups queue
 cancel -a -x
 
-echo $access_key > $app/config/access_key
-echo $secret > $app/config/secret
+echo $access_key > $app/print/config/access_key
+echo $secret > $app/print/config/secret
 echo $access_key | sudo tee /etc/connectd/hardware_id.txt >/dev/null
 
 sudo rm -f /etc/NetworkManager/system-connections/*.nmconnection
