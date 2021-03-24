@@ -1,2 +1,3 @@
 require_relative '../lib/print_receipts'
-PrintReceipts.fetch_and_print
+
+PrintReceipts.poll_and_print
