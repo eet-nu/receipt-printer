@@ -1,5 +1,7 @@
 development:
   url: https://api.eet.test/receipts?locale=nl
+  time_between_polls: 5
 
 production:
   url: https://api.eet.nu/receipts?locale=nl
+  time_between_polls: 5
