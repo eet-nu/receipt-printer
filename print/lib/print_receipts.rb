@@ -40,7 +40,7 @@ class PrintReceipts
           response.read_body do |chunk|
             chunk.split("\n").each do |line|
               next unless line =~ /^data: /
-              parse_json_and_fetch line[6,-1]
+              parse_json_and_fetch line[6..-1]
             end
           end
         else
