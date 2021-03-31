@@ -34,7 +34,7 @@ echo $access_key | sudo tee /etc/connectd/hardware_id.txt >/dev/null
 
 sudo rm -f /etc/NetworkManager/system-connections/*.nmconnection
 
-rm -f ~/.irb_history ~/.bash_history ~/.lesshst
+rm -f ~/.irb_history ~/.bash_history ~/.lesshst ~/.viminfo
 sudo rm -f /var/log/*.gz /var/log/*.1
 true | sudo tee /var/log/lastlog /var/log/auth.log /var/log/daemon.log /var/log/syslog /var/log/user.log /var/log/kern.log
 
