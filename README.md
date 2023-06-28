@@ -13,10 +13,14 @@
 3. Create a new release [https://github.com/eet-nu/receipt-printer/releases/new](https://github.com/eet-nu/receipt-printer/releases/new)
 
 # Create a new receipt printer for end user
-1. Download and unzip the latet release image
+1. Download and unzip the latest release image
 2. Write the img to a new SD (ie. with applePiBaker (v1.9 worked on my M1, v2 did not))
 3. Boot an rpi with the SD and use BerryLan (https://berrylan.org) to connect it to your wifi
 4. Create the receipt printer in the database https://eet.nu/admin/receipt_printers/new
 5. Prep the rpi to ship it `ssh -t pi@bonprint.local '~/image_prep.sh <key> <secret>'`
 6. The rpi will reboot, make sure it pops back up on your BerryLan
 7. Ship it
+8. Beware! If you configure wifi with berrylan on this device you need to restart at point 2 to get it ready again
+
+# reference
+BerryLan's Nymea-networkmanager's mode is set to 'always' (https://github.com/nymea/nymea-networkmanager/blob/ad1326586fa7cb4443c2e092a76761255665ceb8/nymea-networkmanager/main.cpp#L120C53-L120C53)
